@@ -1,7 +1,17 @@
 import smbus
 import time
 from ctypes import c_short
- 
+
+
+"""
+Library from:
+https://kitflix.com/raspberrypi-bmp180-python/
+"""
+
+
+
+
+
 DEVICE = 0x77 # Default device I2C address
  
 #bus = smbus.SMBus(0)  # Rev 1 Pi uses 0
