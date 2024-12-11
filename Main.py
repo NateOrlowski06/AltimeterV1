@@ -6,6 +6,10 @@ from StateMachine import StateMachine
 
 
 
+"""
+This is where the sensors are initialized, the main loop runs, 
+and where the timing of events is handled
+"""
 
 
 def main():
@@ -15,16 +19,18 @@ def main():
     accelerometer = Accelerometer()
     state_machine = StateMachine()
 
-    state_dt = 0.1 #The time interval that the loop runs on
-    sensor_dt = 0.01    
+    state_dt = 0.1 #The time interval that the state is updated
+    sensor_dt = 0.01  #Time interval that sensors are updated
+    
     state_update_initial_time = time.time()
     sensor_update_initial_time = time.time()
 
     #while(str(state_machine.getState()) != "RocketState.LANDED"): This can be implemented once through testing of state machine is finished
     while(True):
         """
-        Using this time if statement, the code is executed on exact time intervals without
-        halting the main loop. 
+        The sensors are updated 10 times as fast as the state is checked. 
+        The data is added to a moving average that is 10 datapoints wide that is updated every sensor_dt
+        The state is checked every state_dt and data is logged within
         """
         current_time = time.time()
         

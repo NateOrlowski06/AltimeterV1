@@ -1,4 +1,21 @@
 import bmpsensor
+
+"""
+This is where the altimeter readings and functions are contained
+
+A moving average is used to mitigate noise in the data
+
+The average velocity is simply calculated by dividing the difference in 
+height by the difference in time. 
+
+The maximum height and maximum velocities are evaluated and stored here
+"""
+
+
+
+
+
+
 WINDOW_SIZE = 10
 class Altimeter():
     def __init__(self):

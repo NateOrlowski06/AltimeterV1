@@ -2,11 +2,19 @@ import csv
 import os.path
 import math
 
+"""
+This is where all csv file operations are contained.
+Handles the creation, naming, writing and closing of the file.
+"""
+
 class DataLogger():
     def __init__(self):
         
+        """
+        Checks for unique file name upon each time running Main.py
+        """
         i = 1
-        while(os.path.exists('data/flight' + str(i) + '.csv')): #Checks if data1.txt exists then data2.txt .......
+        while(os.path.exists('data/flight' + str(i) + '.csv')):
             i = i+1
 
         self.new_file = open('data/flight' + str(i) + '.csv', 'w') #Creates unique file name

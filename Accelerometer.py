@@ -2,6 +2,21 @@ import board
 import adafruit_bno055
 import math
 
+
+"""
+This is where the accelerometer data is read and processed.
+The BNO055 returns a tuple containing an x, y, and z acceleration reading
+For the state machine purposes, we only care about the magnitude of the acceleration vector
+
+A moving average is used to mitigate noise in the data
+
+Sometimes the BNO055 returns a non float value and triggers an error if
+math operations are attempted. A try/except block in the update function
+catches those and replaces them with the most recent data point. 
+"""
+
+
+
 WINDOW_SIZE = 10
 class Accelerometer():
 

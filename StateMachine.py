@@ -1,5 +1,14 @@
 from enum import Enum, auto
 
+"""
+States are evaluated, updated, and handled here.
+Data is logged during mid-air flight states
+Five states; STANDBY, BOOST, COAST, FREEFALL, and LANDED 
+are updated based on sensor data passed through the update() funciton
+called in the main loop.
+The if statement logic creates a way to only move forward in the states
+and allows for simpler logic between state changes. 
+"""
 class RocketState(Enum):
     STANDBY = auto()
     BOOST = auto()
@@ -72,11 +81,11 @@ class StateMachine():
 
 
 
-
-#Condition for coast -> freefall 
-#Freefall starts when height < maxheight
-#From BMP180 Datasheet, the maximum noise is +/- 0.06 hPa which corelates to +/- 1.66 feet at 5000 ft ASL
-#Formula: Altutude = 44330*(1-(p-p0)^0.1903) meters. 0 meters ASL is 1013.25 hPa
-#Therefore, altitude plus double the deviation must be less than the recorded max altitude to detect apogee
-#This would result in 3.32 feet but I am choosing 5 feet for a larger in case of spikes in boost phase.
-        
+"""
+Condition for coast -> freefall 
+Freefall starts when height < maxheight
+From BMP180 Datasheet, the maximum noise is +/- 0.06 hPa which corelates to +/- 1.66 feet at 5000 ft ASL
+Formula: Altutude = 44330*(1-(p-p0)^0.1903) meters. 0 meters ASL is 1013.25 hPa
+Therefore, altitude plus double the deviation must be less than the recorded max altitude to detect apogee
+This would result in 3.32 feet but I am choosing 5 feet for a larger in case of spikes in boost phase.
+"""
