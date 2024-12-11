@@ -1,6 +1,9 @@
 import csv
+"""
+Written by ChatGPT as a way to view csv data
+in format from the terminal window. 
+"""
 
-# Function to display CSV content in a formatted way with 2 decimal places for numeric values
 def display_csv(file_path):
     with open(file_path, 'r') as file:
         reader = csv.reader(file)
@@ -28,7 +31,7 @@ def display_csv(file_path):
             formatted_row = [format_value(row[i]) for i in range(len(row))]
             print(' | '.join(f'{formatted_row[i]:<{column_widths[i]}}' for i in range(len(formatted_row))))
 
-# Example usage
-file_path = 'flight1.csv'  # Replace this with the path to your CSV file
+
+file_path = 'flight1.csv'  
 display_csv(file_path)
 
