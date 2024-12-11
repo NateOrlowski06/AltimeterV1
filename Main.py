@@ -20,12 +20,12 @@ def main():
     state_machine = StateMachine()
 
     state_dt = 0.1 #The time interval that the state is updated
-    sensor_dt = 0.01  #Time interval that sensors are updated
+    sensor_dt = 0.04  #Time interval that sensors are updated based on max polling rate for BMP180
     
     state_update_initial_time = time.time()
     sensor_update_initial_time = time.time()
 
-    #while(str(state_machine.getState()) != "RocketState.LANDED"): This can be implemented once through testing of state machine is finished
+    #while(str(state_machine.getState()) != "RocketState.LANDED"): This can be implemented once throrough testing of state changing is finished
     while(True):
         """
         The sensors are updated 10 times as fast as the state is checked. 
@@ -38,7 +38,6 @@ def main():
             altimeter.update(sensor_dt) 
             accelerometer.update()
             sensor_update_initial_time = time.time()
-            
 
         if(current_time - state_update_initial_time >= state_dt):
             
