@@ -15,7 +15,7 @@ The maximum height and maximum velocities are evaluated and stored here
 
 
 
-
+METERS_TO_FEET = 3.281
 WINDOW_SIZE = 10
 class Altimeter():
     def __init__(self):
@@ -29,7 +29,7 @@ class Altimeter():
 
     def update(self,dt):
         
-        self.altitude_readings.append(bmpsensor.readBmp180()[2])
+        self.altitude_readings.append(bmpsensor.readBmp180()[2] * METERS_TO_FEET)
 
         if (len(self.altitude_readings) > WINDOW_SIZE):
             self.altitude_readings.pop(0)
