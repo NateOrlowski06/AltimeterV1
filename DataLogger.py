@@ -14,10 +14,10 @@ class DataLogger():
         Checks for unique file name upon each time running Main.py
         """
         i = 1
-        while(os.path.exists('data/flight' + str(i) + '.csv')):
+        while(os.path.exists('/home/nate/FlightComputerV1/data/flight' + str(i) + '.csv')):
             i = i+1
 
-        self.new_file = open('data/flight' + str(i) + '.csv', 'w') #Creates unique file name
+        self.new_file = open('/home/nate/FlightComputerV1/data/flight' + str(i) + '.csv', 'w') #Creates unique file name
 
 
         self.csv_writer = csv.writer(self.new_file,delimiter=',') #Creates writer object under the generated file name with comma delimiter
