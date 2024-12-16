@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/home/nate/FlightComputerV1/Main.py", line 58, in <module>
+    main()    
+    ^^^^^^
+  File "/home/nate/FlightComputerV1/Main.py", line 45, in main
+    accelerometer.update()
+  File "/home/nate/FlightComputerV1/Accelerometer.py", line 34, in update
+    self.x = self.sensor.linear_acceleration[0]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/adafruit_bno055.py", line 484, in linear_acceleration
+    if self.mode in [0x08, 0x09, 0x0A, 0x0B, 0x0C]:
+       ^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/adafruit_bno055.py", line 356, in mode
+    return self._read_register(_MODE_REGISTER) & 0b00001111  # Datasheet Table 4-2
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/adafruit_bno055.py", line 828, in _read_register
+    i2c.write_then_readinto(self.buffer, self.buffer, out_end=1, in_start=1)
+  File "/usr/local/lib/python3.11/dist-packages/adafruit_bus_device/i2c_device.py", line 140, in write_then_readinto
+    self.i2c.writeto_then_readfrom(
+  File "/usr/local/lib/python3.11/dist-packages/busio.py", line 232, in writeto_then_readfrom
+    return self._i2c.writeto_then_readfrom(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/adafruit_blinka/microcontroller/generic_linux/i2c.py", line 98, in writeto_then_readfrom
+    readin = self._i2c_bus.read_i2c_block_data(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/dist-packages/Adafruit_PureIO/smbus.py", line 264, in read_i2c_block_data
+    ioctl(self._device.fileno(), I2C_RDWR, request)
+OSError: [Errno 121] Remote I/O error

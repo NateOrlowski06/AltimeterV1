@@ -52,7 +52,8 @@ def main():
                                  data_logger, 
                                  altimeter.getVelocity(),
                                  altimeter.getMaxVelocity(),
-                                 current_time)
+                                 current_time,
+                                 altimeter.getHeight())
             state_update_initial_time = time.time()
 if __name__ == "__main__":
     main()    
