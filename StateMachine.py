@@ -29,7 +29,9 @@ class StateMachine():
                velocity,
                max_velocity,
                seconds,
-               height):
+               height,
+               max_acceleration,
+               max_height):
         
         if(self.state == RocketState.STANDBY):
             
@@ -57,6 +59,7 @@ class StateMachine():
             #Apoggee occurs after the altitude drops significantly below the maximum
             if (altitude + 5 < max_altitude):
                 self.state = RocketState.FREEFALL
+                logger.logMaxStats(max_height, max_velocity, max_acceleration)
 
 
 

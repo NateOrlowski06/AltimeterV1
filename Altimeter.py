@@ -25,6 +25,7 @@ class Altimeter():
         self.max_velocity = 0.0
         self.altitude_readings = [0]*10
         self.initial_altitude = bmpsensor.readBmp180()[2] * METERS_TO_FEET
+        self.max_height = 0.0
 
 
     def update(self,dt):
@@ -49,6 +50,9 @@ class Altimeter():
             self.max_altitude = self.altitude
         if (self.velocity > self.max_velocity):
             self.max_velocity = self.velocity
+        if (self.getHeight() > self.max_height):
+            self.max_height = self.getHeight()
+
     
 
     
@@ -66,3 +70,6 @@ class Altimeter():
        
     def getMaxAltitude(self):
         return self.max_altitude
+
+    def getMaxHeight(self):
+        return self.max_height
