@@ -34,12 +34,12 @@ class Altimeter():
 
         if (len(self.altitude_readings) > WINDOW_SIZE):
             self.altitude_readings.pop(0)
-        
+            self.velocity = (self.altitude_readings[-1] - self.altitude_readings[0])  / (dt * WINDOW_SIZE)
         self.altitude = sum(self.altitude_readings) / len(self.altitude_readings)
         
         
 
-        self.velocity = (self.altitude_readings[-1] - self.altitude_readings[0])  / (dt * WINDOW_SIZE)
+        
 
 
 
