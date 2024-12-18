@@ -10,30 +10,28 @@ Handles the creation, naming, writing and closing of the file.
 class DataLogger():
     def __init__(self):
         
-        """
-        Checks for unique file name upon each time running Main.py
-        """
+        
+        #Creates unique file name upon each time running Main.py
         i = 1
         while(os.path.exists('/home/nate/FlightComputerV1/data/flight' + str(i) + '.csv')):
             i = i+1
 
-        self.new_file = open('/home/nate/FlightComputerV1/data/flight' + str(i) + '.csv', 'w') #Creates unique file name
+        self.new_file = open('/home/nate/FlightComputerV1/data/flight' + str(i) + '.csv', 'w')
 
-
-        self.csv_writer = csv.writer(self.new_file,delimiter=',') #Creates writer object under the generated file name with comma delimiter
-        self.csv_writer.writerow(['Time', 'Altitude','Velocity', 'Acceleration', 'State']) #Writes initial row of titles
+        #Creates writer object under the generated file name with comma delimiter
+        self.csv_writer = csv.writer(self.new_file,delimiter=',') 
+        self.csv_writer.writerow(['Time', 'Altitude','Velocity', 'Acceleration', 'State']) #Writes initial title row
 
    
 
     def log(self, time, alt, velo, accel, state):
-        
         self.csv_writer.writerow([time, alt, velo, accel, state])
         
     def close(self):
         self.new_file.close()
 
     """
-    This function logs the maximum flight statistics upon detection of coasting phase.
+    This function logs the maximum flight statistics upon detection of coasting state.
     Logs one line into a text file formated like:
     Maximum height: 4000 feet   Maximum Velocity: 500 fps   Maximum Acceleration: 9 G
     """
