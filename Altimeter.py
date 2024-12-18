@@ -48,7 +48,7 @@ class Altimeter():
 
         if (self.altitude > self.max_altitude):
             self.max_altitude = self.altitude
-        if (self.velocity > self.max_velocity):
+        if (self.velocity > self.max_velocity and len(self.altitude_readings) >= WINDOW_SIZE):
             self.max_velocity = self.velocity
         if (self.getHeight() > self.max_height):
             self.max_height = self.getHeight()

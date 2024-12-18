@@ -32,6 +32,6 @@ def display_csv(file_path):
             print(' | '.join(f'{formatted_row[i]:<{column_widths[i]}}' for i in range(len(formatted_row))))
 
 
-file_path = 'flight2.csv'  
+file_path = 'flight1.csv'  
 display_csv(file_path)
 

@@ -33,16 +33,15 @@ class Accelerometer():
 
     def update(self):
         
-        #Converts units of meters/second/second to Gs 
-        self.x = self.sensor.linear_acceleration[0] / METRIC_TO_GRAVITY
-        self.y = self.sensor.linear_acceleration[1] / METRIC_TO_GRAVITY
-        self.z = self.sensor.linear_acceleration[2] / METRIC_TO_GRAVITY
+        self.x = self.sensor.linear_acceleration[0]
+        self.y = self.sensor.linear_acceleration[1]
+        self.z = self.sensor.linear_acceleration[2]
         if len(self.acceleration_readings)>WINDOW_SIZE:
             self.acceleration_readings.pop(0)
             self.acceleration = sum(self.acceleration_readings) / len(self.acceleration_readings) 
 
-        try: #subtract 0.05 from the acceleration because the sensor reads roughly 0.05 sitting still
-            self.acceleration_readings.append(math.sqrt(self.x**2 + self.y**2 + self.z**2)-0.05)
+        try: #subtract 0.05 from the acceleration because the sensor reads roughly 0.05 sitting still and converts to Gs
+            self.acceleration_readings.append((math.sqrt(self.x**2 + self.y**2 + self.z**2)-0.05)/METRIC_TO_GRAVITY)
         except (TypeError, ValueError):
             self.acceleration_readings.append(self.acceleration_readings[-1])
         
