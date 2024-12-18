@@ -69,7 +69,7 @@ class StateMachine():
             logger.log(seconds - self.start_time, height, velocity, acceleration, self.state)
             
             
-            if(acceleration <=1):
+            if(acceleration <=0.1):
                 self.state = RocketState.LANDED
 
 
