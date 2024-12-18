@@ -18,6 +18,7 @@ catches those and replaces them with the most recent data point.
 
 
 WINDOW_SIZE = 10
+METRIC_TO_GRAVITY = 9.81
 class Accelerometer():
 
     def __init__(self):
@@ -32,9 +33,10 @@ class Accelerometer():
 
     def update(self):
         
-        self.x = self.sensor.linear_acceleration[0]
-        self.y = self.sensor.linear_acceleration[1]
-        self.z = self.sensor.linear_acceleration[2]
+        #Converts units of meters/second/second to Gs 
+        self.x = self.sensor.linear_acceleration[0] / METRIC_TO_GRAVITY
+        self.y = self.sensor.linear_acceleration[1] / METRIC_TO_GRAVITY
+        self.z = self.sensor.linear_acceleration[2] / METRIC_TO_GRAVITY
         if len(self.acceleration_readings)>WINDOW_SIZE:
             self.acceleration_readings.pop(0)
             self.acceleration = sum(self.acceleration_readings) / len(self.acceleration_readings) 
