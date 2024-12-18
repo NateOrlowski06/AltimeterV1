@@ -9,6 +9,7 @@ called in the main loop.
 The if statement logic creates a way to only move forward in the states
 and allows for simpler logic between state changes. 
 """
+
 class RocketState(Enum):
     STANDBY = auto()
     BOOST = auto()
@@ -42,7 +43,6 @@ class StateMachine():
                 self.start_time = seconds
 
 
-
         elif(self.state == RocketState.BOOST):
             
             logger.log(seconds - self.start_time, height, velocity, acceleration, self.state)
@@ -50,7 +50,6 @@ class StateMachine():
             #Coasting starts after velocity reaches maximum
             if(velocity< 0.9 * max_velocity):
                 self.state = RocketState.COAST
-
 
 
         elif(self.state == RocketState.COAST):
@@ -63,15 +62,12 @@ class StateMachine():
                 logger.logMaxStats(max_height, max_velocity, max_acceleration)
 
 
-
         elif(self.state == RocketState.FREEFALL):
 
             logger.log(seconds - self.start_time, height, velocity, acceleration, self.state)
             
-            
             if(acceleration <=0.1):
                 self.state = RocketState.LANDED
-
 
 
         elif(self.state == RocketState.LANDED):
