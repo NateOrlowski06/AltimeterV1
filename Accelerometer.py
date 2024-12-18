@@ -28,6 +28,7 @@ class Accelerometer():
         self.z = 0.0
         self.acceleration = 0.0
         self.acceleration_readings = [0.0]
+        self.max_acceleration = 0.0
 
     def update(self):
         
@@ -43,8 +44,13 @@ class Accelerometer():
         except (TypeError, ValueError):
             self.acceleration_readings.append(self.acceleration_readings[-1])
         
+        if self.acceleration > self.max_acceleration :
+            self.max_acceleration = self.acceleration
 
         
     def getAcceleration(self):
         return self.acceleration
+
+    def getMaxAcceleration(self):
+        return self.max_acceleration
 
