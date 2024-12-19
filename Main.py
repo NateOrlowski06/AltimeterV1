@@ -40,16 +40,11 @@ def main():
             sensor_update_initial_time = time.time()
 
         if(current_time - state_update_initial_time >= state_dt):
-            state_machine.update(altimeter.getAltitude(), 
-                                 accelerometer.getAcceleration(), 
-                                 altimeter.getMaxAltitude(), 
+            state_machine.update(altimeter,
+                                 accelerometer,
                                  data_logger, 
-                                 altimeter.getVelocity(),
-                                 altimeter.getMaxVelocity(),
                                  current_time,
-                                 altimeter.getHeight(),
-                                 accelerometer.getMaxAcceleration(),
-                                 altimeter.getMaxHeight())
+                                 dt)
             state_update_initial_time = time.time()
 if __name__ == "__main__":
     main()    
