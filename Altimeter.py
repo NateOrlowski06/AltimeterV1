@@ -25,9 +25,8 @@ class Altimeter():
         self.max_height = 0.0
         self.altitude = 0.0
         self.velocity = 0.0
-        self.altitude_readings = [0]*WINDOW_SIZE
+        self.altitude_readings = []*WINDOW_SIZE
         self.initial_altitude = bmpsensor.readBmp180()[2] * METERS_TO_FEET
-        
 
 
     def update(self,dt):

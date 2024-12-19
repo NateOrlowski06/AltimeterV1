@@ -51,7 +51,6 @@ def main():
                                  accelerometer.getMaxAcceleration(),
                                  altimeter.getMaxHeight())
             state_update_initial_time = time.time()
-            print(altimeter.getAltitude())
 if __name__ == "__main__":
     main()    
 
