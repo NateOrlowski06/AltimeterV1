@@ -35,6 +35,12 @@ class StateMachine():
             if (accelerometer.getAcceleration() > 0.25): 
                 self.state = RocketState.BOOST
                 self.start_time = seconds
+                altimeter.setMaxVelocity(0) 
+                """
+                Since velocity is calulated based on difference in altitude, sometimes when the data jumps around
+                there is a high calcuated velocity on the pad. Therefore, the max velocity variable is reset upon detection
+                of takeoff because it is known the velocity was not at a local maximum on the pad. 
+                """
 
 
         elif(self.state == RocketState.BOOST):
