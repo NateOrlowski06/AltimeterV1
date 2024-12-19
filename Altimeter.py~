@@ -1,5 +1,5 @@
 import bmpsensor
-import time
+
 """
 This is where the altimeter readings and functions are contained
 

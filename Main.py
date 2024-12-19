@@ -23,10 +23,6 @@ def main():
     sensor_update_initial_time = time.time()
    
 
-    #The first reading on the accelerometer and sometimes the baro sensor is innacurate,
-    #this initial update gets the first reading out of the way so it does not affect the state machine 
-    altimeter.update(sensor_dt)
-    accelerometer.update()
 
     #while(str(state_machine.getState()) != "RocketState.LANDED"): This can be implemented once throrough testing of state changing is finished
     while(True):
@@ -55,7 +51,7 @@ def main():
                                  accelerometer.getMaxAcceleration(),
                                  altimeter.getMaxHeight())
             state_update_initial_time = time.time()
-            
+            print(altimeter.getAltitude())
 if __name__ == "__main__":
     main()    
 
