@@ -43,8 +43,7 @@ def main():
             state_machine.update(altimeter,
                                  accelerometer,
                                  data_logger, 
-                                 current_time,
-                                 dt)
+                                 current_time)
             state_update_initial_time = time.time()
 if __name__ == "__main__":
     main()    

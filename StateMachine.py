@@ -22,11 +22,11 @@ class StateMachine():
         self.state = RocketState.STANDBY
         self.start_time = 0
 
-    def update(altimeter,
+    def update(self,
+               altimeter,
                accelerometer,
                logger,
-               seconds
-               dt):
+               seconds):
         
         if(self.state == RocketState.STANDBY):
             
