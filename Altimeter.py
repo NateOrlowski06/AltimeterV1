@@ -25,7 +25,9 @@ class Altimeter():
         self.max_height = 0.0
         self.altitude = 0.0
         self.velocity = 0.0
+        self.previous_altitude = 0.0
         self.altitude_readings = []*WINDOW_SIZE
+        self.velocity_calculations = []*WINDOW_SIZE
         self.initial_altitude = bmpsensor.readBmp180()[2] * METERS_TO_FEET
 
 
@@ -36,10 +38,19 @@ class Altimeter():
         #Purges the earliest value in the window
         if (len(self.altitude_readings) > WINDOW_SIZE):
             self.altitude_readings.pop(0)
-            self.velocity = (self.altitude_readings[-1] - self.altitude_readings[0])  / (dt * WINDOW_SIZE)
 
         #Sets altitude variable equal to the average altitude over the window
         self.altitude = sum(self.altitude_readings) / len(self.altitude_readings)
+
+
+        #Creates a moving average for velocity based on the moving average of altitude
+        self.velocity_calculations.append((self.altitude - self.previous_altitude) / dt)
+
+        if (len(self.velocity_calculations) > WINDOW_SIZE):
+            self.velocity_calculations.pop(0)
+
+        self.velocity = sum(self.velocity_calculations) / len(self.velocity_calculations)
+
 
         #Updates all maximum values if necessary
         if (self.altitude > self.max_altitude):
@@ -49,6 +60,7 @@ class Altimeter():
         if (self.getHeight() > self.max_height):
             self.max_height = self.getHeight()
 
+        self.previous_altitude = self.altitude
     
 
     
