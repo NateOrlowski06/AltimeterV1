@@ -29,7 +29,7 @@ class Accelerometer():
         self.z = 0.0
         self.acceleration = 0.0
         self.max_acceleration = 0.0
-        self.acceleration_readings = [0.0]
+        self.acceleration_readings = []*WINDOW_SIZE
         
 
     def update(self):
@@ -43,9 +43,9 @@ class Accelerometer():
             self.acceleration_readings.pop(0)
             self.acceleration = sum(self.acceleration_readings) / len(self.acceleration_readings) 
 
-        #subtract 0.05 from the acceleration because the sensor reads roughly 0.05 sitting still
+        #subtract 0.05 from the acceleration because the sensor reads roughly 0.15 sitting still
         try: 
-            self.acceleration_readings.append( (math.sqrt(self.x**2 + self.y**2 + self.z**2)-0.05) / METRIC_TO_GRAVITY )
+            self.acceleration_readings.append( (math.sqrt(self.x**2 + self.y**2 + self.z**2)-0.15) / METRIC_TO_GRAVITY )
         except (TypeError, ValueError):
         #In the case of a null reading, this repeats the most recent value and moves on
             self.acceleration_readings.append(self.acceleration_readings[-1])

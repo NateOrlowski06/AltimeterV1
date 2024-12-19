@@ -37,8 +37,8 @@ class StateMachine():
         if(self.state == RocketState.STANDBY):
             
             #Nothing to do in standby
-            #Switches to boost state if acceleration is bigger than 0.1 Gs roughly 1 m/s/s
-            if (acceleration > 0.1): 
+            #Switches to boost state if acceleration is bigger than 0.25 Gs roughly 3 m/s/s
+            if (acceleration > 0.25): 
                 self.state = RocketState.BOOST
                 self.start_time = seconds
 
