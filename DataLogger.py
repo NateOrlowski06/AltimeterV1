@@ -23,12 +23,18 @@ class DataLogger():
         self.csv_writer = csv.writer(self.new_file,delimiter=',') 
         self.csv_writer.writerow(['Time', 'Altitude','Velocity', 'Acceleration', 'State']) #Writes initial title row
 
-   
+    self.flush_interval = 1
+    self.last_flush_time = time.time()
 
-    def log(self, time, alt, velo, accel, state):
-        self.csv_writer.writerow([time, alt, velo, accel, state])
-        self.new_file.flush()
-        os.fsync(self.new_file.fileno())
+    def log(self, log_time, alt, velo, accel, state):
+        self.csv_writer.writerow([log_time, alt, velo, accel, state])
+        
+        current_time = time.time()
+        if current_time - self.last_flush_time >= self.flush_interval:
+            self.new_file.flush()
+            os.fsync(self.new_file.fileno())
+            self.last_flush_time = current_time
+
     def close(self):
         self.new_file.close()
 
