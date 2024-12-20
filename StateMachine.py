@@ -35,6 +35,7 @@ class StateMachine():
             if (accelerometer.getAcceleration() > 0.25): 
                 self.state = RocketState.BOOST
                 self.start_time = seconds
+                altimeter.setMaxHeight(0)
                 altimeter.setMaxVelocity(0) 
                 """
                 Since velocity is calulated based on difference in altitude, sometimes when the data jumps around

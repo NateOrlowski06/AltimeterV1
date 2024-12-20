@@ -84,3 +84,6 @@ class Altimeter():
     
     def setMaxVelocity(self, max_velo):
         self.max_velocity = max_velo
+
+    def setMaxHeight(self, max_h):
+        self.max_height = max_h

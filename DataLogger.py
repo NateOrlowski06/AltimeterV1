@@ -46,8 +46,7 @@ class DataLogger():
     def logMaxStats(self, max_height, max_velocity, max_acceleration):
         i = 1
         while(os.path.exists('/home/nate/FlightComputerV1/data/flight' + str(i) + 'stats.txt')):
-            i = i+1
-
+            i = i+1 
         with open('/home/nate/FlightComputerV1/data/flight' + str(i) + 'stats.txt', 'w') as stats_page:
             line = f"Maximum height: {max_height}    Maximum Velocity: {max_velocity}    Maximum Acceleration: {max_acceleration}"
 
