@@ -2,7 +2,7 @@ import csv
 import os.path
 import math
 import os
-
+import time
 """
 This is where all csv file operations are contained.
 Handles the creation, naming, writing and closing of the file.
@@ -23,8 +23,8 @@ class DataLogger():
         self.csv_writer = csv.writer(self.new_file,delimiter=',') 
         self.csv_writer.writerow(['Time', 'Altitude','Velocity', 'Acceleration', 'State']) #Writes initial title row
 
-    self.flush_interval = 1
-    self.last_flush_time = time.time()
+        self.flush_interval = 1
+        self.last_flush_time = time.time()
 
     def log(self, log_time, alt, velo, accel, state):
         self.csv_writer.writerow([log_time, alt, velo, accel, state])
