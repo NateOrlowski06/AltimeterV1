@@ -1,6 +1,7 @@
 import csv
 import os.path
 import math
+import os
 
 """
 This is where all csv file operations are contained.
@@ -26,7 +27,8 @@ class DataLogger():
 
     def log(self, time, alt, velo, accel, state):
         self.csv_writer.writerow([time, alt, velo, accel, state])
-        
+        self.new_file.flush()
+        os.fsync(self.new_file.fileno())
     def close(self):
         self.new_file.close()
 
