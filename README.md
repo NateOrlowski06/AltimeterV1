@@ -11,6 +11,8 @@ The electronics are mounted on a custom bracket inside the rocket designed in CA
 
 
 ## Launches
-The first launch is on my L1 rocket so that I can get as many test launches as possible. 
+The first launch is on my L1 rocket as a preliminary test of the FSM 
+#### Graph from first test launch, raw data in /data
+<img alt="Data graph" src="https://github.com/user-attachments/assets/a78b996c-4085-48b7-9a82-a588733208c4" width="40%" height = "40%">
 
 The remaining launches will be on my L2 rocket, Tempest, to much higher altitudes and more space in the payload section
