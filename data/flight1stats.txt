@@ -1,0 +1,1 @@
+Maximum height: 493.5870780000001    Maximum Velocity: 366.49590250000017    Maximum Acceleration: 3.1785126583975165
