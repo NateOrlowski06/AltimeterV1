@@ -1,3 +1,4 @@
 __pycache__/
 data/
 error_log.log
+venv/
