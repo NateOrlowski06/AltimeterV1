@@ -3,6 +3,7 @@ from Altimeter import Altimeter
 from DataLogger import DataLogger
 from Accelerometer import Accelerometer
 from StateMachine import StateMachine
+import os
 
 """
 This is where the sensors are initialized, the main loop runs, 
@@ -24,8 +25,7 @@ def main():
    
 
 
-    #while(str(state_machine.getState()) != "RocketState.LANDED"): This can be implemented once throrough testing of state changing is finished
-    while(True):
+    while(str(state_machine.getState()) != "RocketState.LANDED"):
         """
         The sensors are updated 10 times as fast as the state is checked. 
         The data is added to a moving average that is 10 datapoints wide that is updated every sensor_dt
@@ -45,6 +45,10 @@ def main():
                                  data_logger, 
                                  current_time)
             state_update_initial_time = time.time()
+
+    time.sleep(5)
+    os.system("sudo shutdown -h now")
+    
 if __name__ == "__main__":
     main()    
 

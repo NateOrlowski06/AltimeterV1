@@ -88,7 +88,7 @@ class StateMachine():
                        accelerometer.getAcceleration(), 
                        self.state)
             
-            if(accelerometer.getAcceleration()<=0.1):
+            if(accelerometer.getAcceleration()<=0.1 and altimeter.getAltitude()<10):
                 self.state = RocketState.LANDED
 
 
@@ -99,8 +99,8 @@ class StateMachine():
                        altimeter.getVelocity(), 
                        accelerometer.getAcceleration(), 
                        self.state)
-            #logger.close()
-            #This will be left out of first flight to ensure data never stops logging incase of instant landing detection
+            logger.close()
+            
 
     def getState(self):
         return self.state
