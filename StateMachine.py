@@ -56,6 +56,15 @@ class StateMachine():
             if(altimeter.getVelocity()< 0.9 * altimeter.getMaxVelocity()):
                 self.state = RocketState.COAST
 
+                """
+                If there is a bump to the rocket on the pad, the accelerometer will detect
+                takeoff but then instantly detect the ending of boost stage. 
+                Therefore, if there is an instant detection of boost ending, i.e. under 10 feet AGL, 
+                then we will assume this was a faulty state change and return to standby
+                """
+                if(altimeter.getAltitude()<10):
+                    self.state = RocketState.STANDBY
+
 
         elif(self.state == RocketState.COAST):
 
